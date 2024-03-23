@@ -1,0 +1,14 @@
+# Usa una imagen base de Fluentd
+FROM fluent/fluentd:v1.12
+
+# Instala plugins adicionales si es necesario
+# RUN gem install fluent-plugin-google-cloud
+
+# Copia tu archivo de configuración de Fluentd al contenedor
+COPY fluentd.conf /fluentd/etc/fluent.conf
+
+# Exponer el puerto si es necesario (depende de tu configuración)
+EXPOSE 24224
+
+# Comando para iniciar Fluentd
+CMD ["fluentd", "-c", "/fluentd/etc/fluent.conf"]

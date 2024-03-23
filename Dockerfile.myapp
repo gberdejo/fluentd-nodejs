@@ -1,0 +1,18 @@
+# Usa una imagen base de Node.js
+FROM node:latest
+
+# Establece el directorio de trabajo en el contenedor
+WORKDIR /usr/src/app
+
+# Copia los archivos de tu aplicación
+COPY package*.json ./
+COPY index.js ./
+
+# Instala las dependencias
+RUN npm install
+
+# Expone el puerto en el que tu aplicación Node.js se ejecutará
+EXPOSE 3000
+
+# Comando para iniciar tu aplicación Node.js
+CMD [ "node", "index.js" ]

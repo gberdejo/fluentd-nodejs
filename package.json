@@ -1,0 +1,17 @@
+{
+  "name": "fluentd-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fluent-org/logger": "^1.0.10",
+    "express": "^4.19.1",
+    "fluent-logger": "^3.4.1",
+    "winston": "^3.12.0"
+  }
+}

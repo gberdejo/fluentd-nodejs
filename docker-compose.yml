@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  myapp:
+    container_name: express_fluentd_demo
+    build: 
+      context: .
+      dockerfile: Dockerfile.myapp
+    ports:
+      - "3000:3000"
+    # Asegúrate de que estás usando el mismo nombre de red para conectar Fluentd y tu aplicación
+    environment:
+      - FLUENTD_HOST=fluentd
+    networks:
+      - fluentd-net
+
+  fluentd:
+    build:
+      context: .
+      dockerfile: Dockerfile.fluentd
+    volumes:
+      - ./fluentd.conf:/fluentd/etc/fluent.conf
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+    # Asegúrate de que estás usando el mismo nombre de red para conectar Fluentd y tu aplicación
+    networks:
+      - fluentd-net
+
+networks:
+  fluentd-net:
